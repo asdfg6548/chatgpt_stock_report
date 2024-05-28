@@ -65,8 +65,7 @@ def main(args):
     for report in tqdm(reports):
         prompt = base_prompt + report
         try:
-            chat_gpt_response = make_requests(engine="gpt-3.5-turbo", prompts=prompt, api_key=args.api_key,
-                                              organization=args.organization)
+            chat_gpt_response = make_requests(engine="gpt-3.5-turbo", prompts=prompt, api_key=args.api_key)
             summary.append(chat_gpt_response.choices[0].message.content)
         except:
             continue
@@ -86,11 +85,11 @@ if __name__ == '__main__':
         required=True,  # 필수 인자로 설정
         default="",
     )
-    parser.add_argument(
-        "--organization",
-        type=str,
-        default="",
-    )
+    # parser.add_argument(
+    #     "--organization",
+    #     type=str,
+    #     default="",
+    # )
     args = parser.parse_args()
 
     main(args)

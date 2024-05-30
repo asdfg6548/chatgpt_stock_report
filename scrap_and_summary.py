@@ -85,11 +85,7 @@ if __name__ == '__main__':
         required=True,  # 필수 인자로 설정
         default="",
     )
-    # parser.add_argument(
-    #     "--organization",
-    #     type=str,
-    #     default="",
-    # )
+
     args = parser.parse_args()
 
     main(args)

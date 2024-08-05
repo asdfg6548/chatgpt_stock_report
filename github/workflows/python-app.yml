@@ -34,4 +34,4 @@ jobs:
         git commit -m "Auto - daily report summary"
         git push origin main
       env:
-        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # 자동으로 제공되는 토큰

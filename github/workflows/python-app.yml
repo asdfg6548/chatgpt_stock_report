@@ -1,0 +1,37 @@
+name: Scraper & Summary
+
+on:
+  schedule:
+    - cron: "0 9 * * 1-5" # 월요일부터 금요일까지 매일 저녁 6시에 실행
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.8'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        python -m pip install -r requirements.txt
+
+    - name: Run Scripts
+      run: |
+        python scrap_and_summary.py --api_key ${{ secrets.OPEN_API_KEY }}
+
+    - name: Commit and Push changes
+      run: |
+        git config --global user.email "asdfg6548@syuin.ac.kr"
+        git config --global user.name "asdfg6548"
+        git add .
+        git commit -m "Auto - daily report summary"
+        git push origin main
+      env:
+        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}

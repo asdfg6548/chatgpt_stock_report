@@ -32,6 +32,6 @@ jobs:
         git config --global user.name "asdfg6548"
         git add .
         git commit -m "Auto - daily report summary"
-        git push origin main
+        git push origin master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # 자동으로 제공되는 토큰

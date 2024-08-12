@@ -2,7 +2,7 @@ name: Scraper & Summary
 
 on:
   schedule:
-    -  cron: "0 9 * * 1-5" # 월요일부터 금요일까지 매일 저녁 6시에 실행
+    - cron: "0 9 * * 1-5"
 jobs:
   build:
 
@@ -26,10 +26,10 @@ jobs:
         git config --local user.email "asdfg6548@syuin.ac.kr"
         git config --local user.name "asdfg6548"
         git add .
-        git commit -m "Auto - daliy report summary"
+        git commit -m "Auto - daily report summary"
         git push origin master
     - name: Push
       uses: ad-m/github-push-action@master
       with:
         branch: 'master'
-        github_token: $
+        github_token: ${{ secrets.GITHUB_TOKEN }}
